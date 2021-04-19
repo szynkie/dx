@@ -36,5 +36,11 @@ button[type="submit"] {
   font-size: 20px;
 }
 
-h1 h2 p {
+div[type="values"] {
+  width: 100%;
+  height: 100%;
+  display: flexbox;
+  align-items: flex-start;
+  box-sizing: border-box;
+  padding: 40px;
 }
