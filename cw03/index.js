@@ -37,6 +37,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var inputBox;
 var srchButton = document.querySelector('#srchBtn');
 var nameh1 = document.querySelector('#name');
+var desch2 = document.querySelector('#desc');
+var tempp = document.querySelector('#temp');
 srchButtonAction();
 function getInput() {
     inputBox = document.querySelector('#inputBox');
@@ -56,12 +58,10 @@ function getData(city) {
                     return [4 /*yield*/, fetch(apiURL)];
                 case 1:
                     weatherResp = _a.sent();
-                    return [4 /*yield*/, weatherResp.json()
-                        //console.log(weatherData)
-                    ];
+                    return [4 /*yield*/, weatherResp.json()];
                 case 2:
                     weatherData = _a.sent();
-                    //console.log(weatherData)
+                    console.log(weatherData);
                     return [2 /*return*/, weatherData];
             }
         });
@@ -82,6 +82,8 @@ function getStorageData() {
 function painter(data) {
     getData(data)
         .then(function (value) {
-        return nameh1.innerHTML = value['name'];
+        nameh1.innerHTML = value['name'];
+        desch2.innerHTML = value['weather'][0]['description'];
+        tempp.innerHTML = value['main']['temp'] + "°C";
     });
 }

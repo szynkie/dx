@@ -2,6 +2,8 @@ let inputBox: HTMLInputElement
 
 const srchButton = document.querySelector('#srchBtn')
 var nameh1 = document.querySelector('#name')
+var desch2 = document.querySelector('#desc')
+var tempp = document.querySelector('#temp')
 
 srchButtonAction()
 
@@ -20,7 +22,7 @@ async function getData(city: string): Promise<any> {
     const apiURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     const weatherResp = await fetch(apiURL)
     const weatherData = await weatherResp.json()
-    //console.log(weatherData)
+    console.log(weatherData)
     return weatherData
 }
 
@@ -40,6 +42,8 @@ function getStorageData(){
 
 function painter(data){
     getData(data)
-    .then(value => 
-        nameh1.innerHTML = value['name'])
+    .then(value => {
+        nameh1.innerHTML = value['name']
+        desch2.innerHTML = value['weather'][0]['description']
+        tempp.innerHTML = value['main']['temp'] + "°C"})
 }
