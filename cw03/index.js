@@ -36,10 +36,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 var inputBox;
 var srchButton = document.querySelector('#srchBtn');
+var nameh1 = document.querySelector('#name');
 srchButtonAction();
 function getInput() {
     inputBox = document.querySelector('#inputBox');
-    getData(inputBox.value);
+    painter(inputBox.value);
 }
 function srchButtonAction() {
     srchButton.addEventListener('click', getInput);
@@ -55,12 +56,32 @@ function getData(city) {
                     return [4 /*yield*/, fetch(apiURL)];
                 case 1:
                     weatherResp = _a.sent();
-                    return [4 /*yield*/, weatherResp.json()];
+                    return [4 /*yield*/, weatherResp.json()
+                        //console.log(weatherData)
+                    ];
                 case 2:
                     weatherData = _a.sent();
-                    console.log(weatherData);
-                    return [2 /*return*/];
+                    //console.log(weatherData)
+                    return [2 /*return*/, weatherData];
             }
         });
+    });
+}
+function setLocationData(city) {
+    localStorage.setItem('city', city);
+}
+function getStorageData() {
+    var city = "krakow";
+    if (localStorage.getItem('city') === null) {
+    }
+    else {
+        city = localStorage.getItem('city');
+    }
+    return city;
+}
+function painter(data) {
+    getData(data)
+        .then(function (value) {
+        return nameh1.innerHTML = value['name'];
     });
 }
