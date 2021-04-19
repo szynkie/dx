@@ -4,6 +4,7 @@ const srchButton = document.querySelector('#srchBtn')
 var nameh1 = document.querySelector('#name')
 var desch2 = document.querySelector('#desc')
 var tempp = document.querySelector('#temp')
+var pressp = document.querySelector('#press')
 
 srchButtonAction()
 
@@ -42,8 +43,10 @@ function getStorageData(){
 
 function painter(data){
     getData(data)
-    .then(value => {
+    .then(value =>{  if(value['cod']!= "400")
         nameh1.innerHTML = value['name']
         desch2.innerHTML = value['weather'][0]['description']
-        tempp.innerHTML = value['main']['temp'] + "°C"})
+        tempp.innerHTML = value['main']['temp'] + "°C"
+        pressp.innerHTML = value['main']['pressure'] + "hPa"})
+        .catch(err => alert("Invalid data"))
 }
