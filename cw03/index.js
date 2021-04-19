@@ -41,9 +41,11 @@ var desch2 = document.querySelector('#desc');
 var tempp = document.querySelector('#temp');
 var pressp = document.querySelector('#press');
 srchButtonAction();
+alterPainer();
 function getInput() {
     inputBox = document.querySelector('#inputBox');
     painter(inputBox.value);
+    inputBox.value = "";
 }
 function srchButtonAction() {
     srchButton.addEventListener('click', getInput);
@@ -63,6 +65,8 @@ function getData(city) {
                 case 2:
                     weatherData = _a.sent();
                     console.log(weatherData);
+                    if (weatherData['cod'] != 400 && weatherData['cod'] != 404)
+                        setLocationData(JSON.stringify(weatherData));
                     return [2 /*return*/, weatherData];
             }
         });
@@ -78,16 +82,19 @@ function getStorageData() {
     else {
         city = localStorage.getItem('city');
     }
-    return city;
+    return (JSON.parse(city))['name'];
 }
 function painter(data) {
     getData(data)
         .then(function (value) {
-        if (value['cod'] != "400")
+        if (value['cod'] != "400" && value['cod'] != "404")
             nameh1.innerHTML = value['name'];
         desch2.innerHTML = value['weather'][0]['description'];
         tempp.innerHTML = value['main']['temp'] + "°C";
         pressp.innerHTML = value['main']['pressure'] + "hPa";
     })
         .catch(function (err) { return alert("Invalid data"); });
+}
+function alterPainer() {
+    painter(getStorageData());
 }

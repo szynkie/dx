@@ -7,10 +7,12 @@ var tempp = document.querySelector('#temp')
 var pressp = document.querySelector('#press')
 
 srchButtonAction()
+alterPainer()
 
 function getInput(): void{
     inputBox = document.querySelector('#inputBox')
     painter(inputBox.value)
+    inputBox.value=""
 }
 
 function srchButtonAction(): void{
@@ -24,6 +26,8 @@ async function getData(city: string): Promise<any> {
     const weatherResp = await fetch(apiURL)
     const weatherData = await weatherResp.json()
     console.log(weatherData)
+    if(weatherData['cod']!=400 && weatherData['cod']!=404)
+    setLocationData(JSON.stringify(weatherData))
     return weatherData
 }
 
@@ -38,15 +42,20 @@ function getStorageData(){
     } else {
         city = localStorage.getItem('city')
     }
-    return city
+    
+    return (JSON.parse(city))['name']
 }
 
 function painter(data){
     getData(data)
-    .then(value =>{  if(value['cod']!= "400")
+    .then(value =>{  if(value['cod']!= "400" && value['cod']!="404")
         nameh1.innerHTML = value['name']
         desch2.innerHTML = value['weather'][0]['description']
         tempp.innerHTML = value['main']['temp'] + "°C"
         pressp.innerHTML = value['main']['pressure'] + "hPa"})
         .catch(err => alert("Invalid data"))
+}
+
+function alterPainer(){
+    painter(getStorageData())
 }
