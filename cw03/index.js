@@ -88,13 +88,14 @@ function getStorageData() {
 function painter(data) {
     getData(data)
         .then(function (value) {
-        if (value['cod'] != "400" && value['cod'] != "404")
+        if (value['cod'] != "400" && value['cod'] != "404") {
             var icon = value['weather'][0]['icon'];
-        icoscr.src = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
-        nameh1.innerHTML = value['name'];
-        desch2.innerHTML = value['weather'][0]['description'];
-        tempp.innerHTML = value['main']['temp'] + "°C";
-        pressp.innerHTML = value['main']['pressure'] + "hPa";
+            icoscr.src = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
+            nameh1.innerHTML = value['name'];
+            desch2.innerHTML = value['weather'][0]['description'];
+            tempp.innerHTML = value['main']['temp'] + "°C";
+            pressp.innerHTML = value['main']['pressure'] + "hPa";
+        }
     })
         .catch(function (err) { return alert("Invalid data"); });
 }
