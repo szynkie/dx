@@ -40,6 +40,7 @@ var nameh1 = document.querySelector('#name');
 var desch2 = document.querySelector('#desc');
 var tempp = document.querySelector('#temp');
 var pressp = document.querySelector('#press');
+var icoscr = document.getElementById("ico");
 srchButtonAction();
 alterPainer();
 function getInput() {
@@ -88,7 +89,9 @@ function painter(data) {
     getData(data)
         .then(function (value) {
         if (value['cod'] != "400" && value['cod'] != "404")
-            nameh1.innerHTML = value['name'];
+            var icon = value['weather'][0]['icon'];
+        icoscr.src = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
+        nameh1.innerHTML = value['name'];
         desch2.innerHTML = value['weather'][0]['description'];
         tempp.innerHTML = value['main']['temp'] + "°C";
         pressp.innerHTML = value['main']['pressure'] + "hPa";
