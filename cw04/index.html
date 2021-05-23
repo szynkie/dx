@@ -4,35 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./main.css">
     <title>Notes</title>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Notes App</h1>
-            <form action="">
-                <input type="text" id="note-title" placeholder="Note title">
-                <textarea name="" id="note-text" placeholder="Note details"></textarea>
-                <button id="add-button">Add</button>
-            </form>
-        </div>
-    </header>
-    <section>
-        <div class="container">
-            <h2>Your Notes</h2>
-            <hr>
-            <div id="notes">
-                <div id="note">
-                    <p class="note-counter">Note 1</p>
-                    <h3 class="note-title">Hello</h3>
-                    <p class="note-text">Some note</p>
-                    <button class="note-btn">Delete</button>
-                    <button class="note-btn edit-bnt">Edit</button>
+    <div class="modal" id="modal">
+        <form class="modal-window">
+            <div class="modal-form" id="modal-form">
+                <div class="modal-form-container">
+                    <input id="note-title" type="text" placeholder="Note title" required />
                 </div>
+                <div class="modal-form-container">
+                    <textarea id="note-content" placeholder="Note content" rows="10"></textarea>
+                </div>
+                <div class="modal-color-picker" id="color-picker">
+                </div>
+                <label class="modal-toggle">
+                    <input id="note-pinned" type="checkbox" />
+                    <span class="styler"></span>
+                    Pinned
+                </label>
+                
             </div>
-        </div>
-    </section>
+            <div class="modal-buttons">
+                <button type="button" id="close-modal-btn" class="modal-button">Close</button>
+                <button type="submit" id="save-modal-btn" class="modal-button modal-button-save">Save</button>
+            </div>
+        </form>
+    </div>
     
     <script src="index.js"></script>
 </body>

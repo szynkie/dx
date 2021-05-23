@@ -1,0 +1,172 @@
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #000453;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.modal-window {
+  min-width: 400px;
+  min-height: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #161616;
+}
+
+.modal-form {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.5rem;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.modal-form input,
+.modal-form textarea {
+  background: #262626;
+  color: #e7e7e7;
+  font-family: "Roboto", sans-serif;
+  min-height: 1.5rem;
+  border: 2px solid transparent;
+  -webkit-transition: border 0.5s;
+  transition: border 0.5s;
+  width: 100%;
+}
+
+.modal-form input:focus,
+.modal-form textarea:focus {
+  outline: 0;
+  border: 2px solid #e7e7e7;
+}
+
+.modal-form textarea {
+  resize: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.modal-form-container {
+  width: 100%;
+  gap: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.modal-buttons {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.modal-buttons .modal-button {
+  background: #666;
+  color: #e7e7e7;
+  border: 0;
+  padding: 0.7rem 3rem 0.7rem 0.8rem;
+  line-height: 1;
+  cursor: pointer;
+  width: 50%;
+  text-align: left;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.modal-buttons .modal-button:hover {
+  background: #4d4d4d;
+}
+
+.modal-buttons .modal-button-save {
+  background: #23831a;
+}
+
+.modal-buttons .modal-button-save:hover {
+  background: #1b6514;
+}
+
+.modal-toggle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  gap: 0.5rem;
+}
+
+.modal-toggle input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.modal-toggle input:checked ~ .styler {
+  background-color: #23831a;
+}
+
+.modal-toggle input:checked ~ .styler::before {
+  left: 1.5rem;
+}
+
+.modal-toggle .styler {
+  width: 3rem;
+  height: 1.5rem;
+  border-radius: 1rem;
+  border: 2px solid transparent;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: block;
+  background-color: #666;
+  position: relative;
+}
+
+.modal-toggle .styler::before {
+  content: "";
+  position: absolute;
+  width: 1.2rem;
+  height: 1.2rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 1px;
+  border-radius: 1rem;
+  background-color: #e7e7e7;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+/*# sourceMappingURL=main.css.map */

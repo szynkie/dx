@@ -1,0 +1,131 @@
+$bg-color: #161616;
+$font-color: #e7e7e7;
+$unactive-color: #666;
+$unactive-color-hover: darken($unactive-color, 10);
+$action-color: #23831a;
+$action-color--alt: #e49a22;
+$action-color--alt-hover: darken($action-color--alt, 10);
+$action-color-hover: darken($action-color, 7);
+$font: "Roboto", sans-serif;
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #000453;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+
+  &-window {
+    min-width: 400px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    background: $bg-color;
+  }
+
+  &-form {
+    flex: 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+    input,
+    textarea {
+      background: #262626;
+      color: $font-color;
+      font-family: $font;
+      min-height: 1.5rem;
+      border: 2px solid transparent;
+      transition: border 0.5s;
+      width: 100%;
+      &:focus {
+        outline: 0;
+        border: 2px solid $font-color;
+      }
+    }
+    textarea {
+      resize: none;
+      box-sizing: border-box;
+    }
+    &-container {
+      width: 100%;
+      gap: 1rem;
+      display: flex;
+    }
+  }
+
+  &-buttons {
+    width: 100%;
+    display: flex;
+    .modal-button {
+      background: $unactive-color;
+      color: $font-color;
+      border: 0;
+      padding: 0.7rem 3rem 0.7rem 0.8rem;
+      line-height: 1;
+      cursor: pointer;
+      width: 50%;
+      text-align: left;
+      transition: 0.5s;
+      &:hover {
+        background: $unactive-color-hover;
+      }
+      &-save {
+        background: $action-color;
+        &:hover {
+          background: $action-color-hover;
+        }
+      }
+    }
+  }
+  &-toggle {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    gap: 0.5rem;
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+      &:checked {
+        ~ .styler {
+          background-color: $action-color;
+          &::before {
+            left: 1.5rem;
+          }
+        }
+      }
+    }
+    .styler {
+      width: 3rem;
+      height: 1.5rem;
+      border-radius: 1rem;
+      border: 2px solid transparent;
+      box-sizing: border-box;
+      display: block;
+      background-color: $unactive-color;
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        width: 1.2rem;
+        height: 1.2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 1px;
+        border-radius: 1rem;
+        background-color: $font-color;
+        transition: 0.1s;
+      }
+    }
+  }
+}
