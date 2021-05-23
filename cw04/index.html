@@ -8,6 +8,22 @@
     <title>Notes</title>
 </head>
 <body>
+    <main>
+        <div class="main" id="main">
+            <div class="searchbar">
+                <input type="text" id="searchabr" placeholder="Filter">
+                <button class="searchbar-button" id="search-clear"></button>
+            </div>
+            <header class="toolbar">
+                <div class="toolbar-buttons" id="toolbarTags"></div>
+                <button class="toolbar-button newNote-button" id="add-note">Add Note</button>
+            </header>
+            <section class="content">
+                <div class="notes notes--pinned" id="notes-pinned"></div>
+                <div class="notes" id="notes-other"></div>
+            </section>
+        </div>
+    </main>
     <div class="modal" id="modal">
         <form class="modal-window">
             <div class="modal-form" id="modal-form">
